@@ -399,7 +399,7 @@ export function WhatsAppIcon({ className }: { className?: string }) {
 export function Footer() {
   return (
     <footer className="mt-24 bg-ink text-ink-foreground">
-      <div className="container-x border-b border-ink-foreground/10 py-8"><div className="[&_*]:!text-ink-foreground [&_.bg-surface]:!bg-ink-foreground/5 [&_.bg-background]:!bg-primary"><Reassurance compact /></div></div>
+      <div className="container-x border-b border-ink-foreground/10 py-8"><Reassurance compact dark /></div>
       <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
         <div>
           <div className="flex items-center gap-3"><Logo className="h-14 w-14" /><div><p className="font-display text-xl font-extrabold">Belle Image</p><p className="text-sm text-ink-muted">{site.nameAr}</p></div></div>

@@ -111,17 +111,17 @@ export function SectionTitle({ eyebrow, title, action, light }: { eyebrow?: stri
 }
 
 const reassuranceIcons = [Banknote, Truck, ShieldCheck, Store];
-export function Reassurance({ compact }: { compact?: boolean }) {
+export function Reassurance({ compact, dark }: { compact?: boolean; dark?: boolean }) {
   return (
     <div className={`grid grid-cols-2 gap-3 md:grid-cols-4 ${compact ? "" : "md:gap-4"}`}>
       {t.reassurance.map((r, i) => {
         const Icon = reassuranceIcons[i];
         return (
-          <div key={r.title} className="flex items-center gap-3 rounded-2xl bg-surface p-4">
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-background text-primary shadow-card"><Icon className="h-5 w-5" /></span>
+          <div key={r.title} className={`flex items-center gap-3 rounded-2xl p-4 ${dark ? "bg-ink-foreground/5" : "bg-surface"}`}>
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full ${dark ? "bg-primary text-primary-foreground" : "bg-background text-primary shadow-card"}`}><Icon className="h-5 w-5" /></span>
             <div className="min-w-0">
-              <p className="text-sm font-bold leading-tight text-ink">{r.title}</p>
-              <p className="text-xs text-muted-foreground">{r.text}</p>
+              <p className={`text-sm font-bold leading-tight ${dark ? "text-ink-foreground" : "text-ink"}`}>{r.title}</p>
+              <p className={`text-xs ${dark ? "text-ink-muted" : "text-muted-foreground"}`}>{r.text}</p>
             </div>
           </div>
         );
