@@ -1,0 +1,63 @@
+// Chaînes d'interface (fr-MA). Ajouter ar.ts avec la même forme pour la version arabe (RTL).
+export const fr = {
+  dir: "ltr" as "ltr" | "rtl",
+  lang: "fr-MA",
+  topbar: ["Paiement à la livraison", "Livraison à domicile", "Showroom à Kénitra"],
+  nav: {
+    electro: "Électroménager",
+    furniture: "Ameublement",
+    promos: "Promotions",
+    brands: "Marques",
+    showroom: "Showroom",
+    contact: "Contact",
+    advice: "Conseils",
+    allProducts: "Toute la boutique",
+  },
+  search: {
+    placeholder: "Rechercher un produit, une marque…",
+    products: "Produits",
+    categories: "Catégories",
+    none: "Aucun résultat",
+    seeAll: "Voir tous les résultats",
+  },
+  cart: {
+    title: "Votre panier",
+    empty: "Votre panier est vide",
+    emptyHint: "Parcourez nos rayons et ajoutez vos coups de cœur.",
+    subtotal: "Sous-total",
+    delivery: "Livraison",
+    total: "Total",
+    checkout: "Commander — paiement à la livraison",
+    viewCart: "Voir le panier",
+    add: "Ajouter au panier",
+    added: "Ajouté au panier",
+    remove: "Retirer",
+    deliveryNote: "Frais de livraison calculés selon votre ville à l'étape suivante.",
+    continue: "Continuer mes achats",
+  },
+  product: {
+    inStock: "En stock",
+    lowStock: "Stock limité",
+    outOfStock: "Sur commande",
+    orderNow: "Commander maintenant",
+    orderWhatsapp: "Commander via WhatsApp",
+    savings: "Vous économisez",
+    quantity: "Quantité",
+    related: "Produits similaires",
+    together: "Souvent achetés ensemble",
+    brand: "Marque à confirmer",
+    sample: "CONTENU EXEMPLE À REMPLACER",
+    imagePlaceholder: "IMAGE À REMPLACER",
+  },
+  reassurance: [
+    { title: "Paiement à la livraison", text: "Vous payez à la réception" },
+    { title: "Livraison à domicile", text: "Kénitra et tout le Maroc" },
+    { title: "Garantie constructeur", text: "SAV assuré par nos équipes" },
+    { title: "Conseil en showroom", text: "Venez voir et comparer" },
+  ],
+  fav: { title: "Mes favoris", empty: "Aucun favori pour le moment" },
+  assistant: { title: "Conseiller Belle Image", placeholder: "Posez votre question…", open: "Ouvrir le conseiller" },
+};
+
+export type Dict = typeof fr;
+export const t = fr;
