@@ -118,7 +118,7 @@ export function Reassurance({ compact, dark }: { compact?: boolean; dark?: boole
         const Icon = reassuranceIcons[i];
         return (
           <div key={r.title} className={`flex items-center gap-3 rounded-2xl p-4 ${dark ? "bg-ink-foreground/5" : "bg-surface"}`}>
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full ${dark ? "bg-primary text-primary-foreground" : "bg-background text-primary shadow-card"}`}><Icon className="h-5 w-5" /></span>
+            <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-full ${dark ? "bg-primary text-primary-foreground" : "bg-background text-primary shadow-card"}`}><Icon className="h-5 w-5" /></span>
             <div className="min-w-0">
               <p className={`text-sm font-bold leading-tight ${dark ? "text-ink-foreground" : "text-ink"}`}>{r.title}</p>
               <p className={`text-xs ${dark ? "text-ink-muted" : "text-muted-foreground"}`}>{r.text}</p>
