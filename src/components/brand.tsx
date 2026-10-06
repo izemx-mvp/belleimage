@@ -1,4 +1,3 @@
-import logo from "@/assets/logo.jpg.asset.json";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
@@ -7,16 +6,45 @@ import {
 } from "lucide-react";
 import type { IconKey } from "@/data/categories";
 import { t } from "@/i18n/fr";
-
-export const logoUrl = logo.url;
+import { getImage } from "@/lib/images";
+import { getCategory } from "@/lib/catalogue";
+import { site } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 export const categoryIcons: Record<IconKey, LucideIcon> = {
   fridge: Refrigerator, washer: WashingMachine, oven: CookingPot, tv: Tv, ac: AirVent, blender: Blend,
   sofa: Sofa, bed: BedDouble, dining: UtensilsCrossed, wardrobe: Archive,
 };
 
+export const iconForCategory = (slug: string | undefined): LucideIcon => categoryIcons[getCategory(slug)?.icon ?? "fridge"];
+
+/**
+ * Logo officiel (src/assets/belle-image-logo.png, via getImage("logo")) : badge rond sur fond blanc.
+ * Sans fichier, badge de repli dans le style de la marque (cercle rouge + rangée d'étoiles).
+ */
 export function Logo({ className = "h-11 w-11" }: { className?: string }) {
-  return <img src={logo.url} alt="Belle Image — أحسن صورة" className={`${className} rounded-full object-contain`} width={44} height={44} />;
+  const src = getImage("logo");
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt={`${site.name} — ${site.nameAr}`}
+        width={447}
+        height={447}
+        decoding="async"
+        className={cn(className, "shrink-0 rounded-full bg-white object-cover")}
+      />
+    );
+  }
+  return (
+    <span role="img" aria-label={`${site.name} — ${site.nameAr}`} className={cn(className, "relative grid shrink-0 place-items-center rounded-full bg-primary text-primary-foreground")}>
+      <span className="absolute inset-[3px] rounded-full border-2 border-primary-foreground/80" aria-hidden />
+      <span className="relative flex flex-col items-center leading-none">
+        <Stars className="text-primary-foreground" size={7} />
+        <span className="mt-0.5 font-display text-[0.55em] font-extrabold tracking-tight">BI</span>
+      </span>
+    </span>
+  );
 }
 
 /** Signature : cinq étoiles, celle du centre plus grande. */
@@ -98,12 +126,12 @@ export function CountUp({ to, suffix = "", prefix = "" }: { to: number; suffix?:
   return <span ref={ref} className="tabular">{prefix}{v.toLocaleString("fr-FR").replace(/\u202f/g, " ")}{suffix}</span>;
 }
 
-export function SectionTitle({ eyebrow, title, action, light }: { eyebrow?: string; title: string; action?: ReactNode; light?: boolean }) {
+export function SectionTitle({ eyebrow, title, action, light, id }: { eyebrow?: string | undefined; title: string; action?: ReactNode; light?: boolean; id?: string }) {
   return (
     <div className="mb-8 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
       <div className="min-w-0">
         {eyebrow && <p className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-primary"><Stars size={10} />{eyebrow}</p>}
-        <h2 className={`text-3xl font-extrabold md:text-4xl ${light ? "text-ink-foreground" : "text-ink"}`}>{title}</h2>
+        <h2 id={id} className={`text-3xl font-extrabold md:text-4xl ${light ? "text-ink-foreground" : "text-ink"}`}>{title}</h2>
       </div>
       {action}
     </div>
@@ -115,7 +143,7 @@ export function Reassurance({ compact, dark }: { compact?: boolean; dark?: boole
   return (
     <div className={`grid grid-cols-2 gap-3 md:grid-cols-4 ${compact ? "" : "md:gap-4"}`}>
       {t.reassurance.map((r, i) => {
-        const Icon = reassuranceIcons[i];
+        const Icon = reassuranceIcons[i] ?? Store;
         return (
           <div key={r.title} className={`flex items-center gap-3 rounded-2xl p-4 ${dark ? "bg-ink-foreground/5" : "bg-surface"}`}>
             <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-full ${dark ? "bg-primary text-primary-foreground" : "bg-background text-primary shadow-card"}`}><Icon className="h-5 w-5" /></span>
@@ -130,14 +158,34 @@ export function Reassurance({ compact, dark }: { compact?: boolean; dark?: boole
   );
 }
 
-export function ProductImage({ icon, label, className = "" }: { icon: IconKey; label?: string; className?: string }) {
-  const Icon = categoryIcons[icon];
+/** Badge circulaire « Qualité garantie » avec l'arc rouge et les étoiles. */
+export function QualityBadge({ className = "" }: { className?: string }) {
   return (
-    <div className={`relative flex aspect-square w-full flex-col items-center justify-center overflow-hidden bg-surface ${className}`}>
-      <div className="absolute -bottom-1/3 left-1/2 h-2/3 w-[120%] -translate-x-1/2 rounded-[50%] border-[10px] border-primary/10" aria-hidden />
-      <Icon className="relative h-1/3 w-1/3 text-ink/70" strokeWidth={1.1} aria-hidden />
-      <span className="relative mt-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">{label ?? t.product.imagePlaceholder}</span>
+    <div className={cn("grid h-28 w-28 place-items-center rounded-full bg-background shadow-lift", className)}>
+      <div className="grid h-[88%] w-[88%] place-items-center rounded-full border-[5px] border-primary text-center">
+        <div>
+          <Stars size={10} />
+          <p className="mt-1 font-display text-[11px] font-extrabold uppercase leading-tight tracking-wide text-ink">{t.home.heroBadge}</p>
+          <p className="text-[10px] font-semibold text-muted-foreground">depuis {site.foundedYear}</p>
+        </div>
+      </div>
     </div>
   );
 }
 
+/** Carte Google Maps intégrée (chargement différé). */
+export function MapEmbed({ className = "" }: { className?: string }) {
+  return (
+    <iframe
+      title={t.common.mapTitle}
+      src={site.mapEmbed}
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      className={cn("h-full min-h-[280px] w-full rounded-2xl border-0 bg-surface", className)}
+    />
+  );
+}
+
+export function SampleNote({ children = t.product.sample, className = "" }: { children?: ReactNode; className?: string }) {
+  return <span className={cn("inline-flex items-center rounded bg-primary-soft px-1.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-primary-deep", className)}>{children}</span>;
+}
