@@ -141,6 +141,3 @@ export function ProductImage({ icon, label, className = "" }: { icon: IconKey; l
   );
 }
 
-export function Breadcrumbs({ items }: { items: { label: string; to?: string; params?: Record<string, string> }[] }) {
-  return null as unknown as JSX.Element; // remplacé par BreadcrumbNav (layout.tsx)
-}
