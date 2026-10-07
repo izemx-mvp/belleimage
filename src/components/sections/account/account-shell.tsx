@@ -1,5 +1,5 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { Check, Heart, LayoutDashboard, LogOut, MapPin, Package, User } from "lucide-react";
+import { Check, LayoutDashboard, LogOut, MapPin, Package, User } from "lucide-react";
 import { useEffect, type ReactNode } from "react";
 import { Logo } from "@/components/brand";
 import { Crumbs } from "@/components/layout";
@@ -13,7 +13,6 @@ const links = [
   { to: "/compte", label: t.account.links.overview, icon: LayoutDashboard, exact: true },
   { to: "/compte/commandes", label: t.account.links.orders, icon: Package, exact: false },
   { to: "/compte/adresses", label: t.account.links.addresses, icon: MapPin, exact: false },
-  { to: "/favoris", label: t.account.links.favorites, icon: Heart, exact: false },
   { to: "/compte/profil", label: t.account.links.profile, icon: User, exact: false },
 ] as const;
 

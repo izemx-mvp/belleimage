@@ -2,7 +2,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import {
-  Search, Heart, ShoppingBag, Menu, X, ChevronDown, Phone, MapPin, Clock, Facebook, Instagram, Minus, Plus, Trash2, ChevronRight, MessageCircle, Percent, ArrowRight,
+  Search, ShoppingBag, Menu, X, ChevronDown, Phone, MapPin, Clock, Facebook, Instagram, Minus, Plus, Trash2, ChevronRight, MessageCircle, Percent, ArrowRight,
   ArrowUp, Banknote, Mail, Navigation, ShieldCheck, Store, Truck,
 } from "lucide-react";
 import { site } from "@/config/site";
@@ -228,7 +228,7 @@ const navLinks = [
 ] as const;
 
 export function Header() {
-  const { count, subtotal, setCartOpen, favs, bump, cartIconRef } = useShop();
+  const { count, subtotal, setCartOpen, bump, cartIconRef } = useShop();
   const [mega, setMega] = useState<null | Pillar>(null);
   const [mobile, setMobile] = useState(false);
   const scrolled = useScrolled();
@@ -275,10 +275,6 @@ export function Header() {
                 <span className="tabular block text-sm font-bold text-ink">{site.phone}</span>
               </span>
             </a>
-            <Link to="/favoris" className="relative grid h-11 w-11 place-items-center rounded-full transition-colors hover:bg-surface" aria-label={t.fav.title}>
-              <Heart className="h-5 w-5" />
-              {favs.length > 0 && <span className="tabular absolute right-0.5 top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground">{favs.length}</span>}
-            </Link>
             <AccountMenu />
             <motion.button
               ref={(el) => { cartIconRef.current = el; }}
@@ -392,7 +388,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           </div>
         ))}
         <div className="mt-4 grid gap-1">
-          {[{ to: "/boutique", label: t.nav.allProducts } as const, ...navLinks, { to: "/favoris", label: t.fav.title } as const].map((l) => (
+          {[{ to: "/boutique", label: t.nav.allProducts } as const, ...navLinks].map((l) => (
             <Link key={l.to} to={l.to} onClick={onClose} className="flex items-center justify-between rounded-xl px-2 py-3 font-semibold hover:bg-surface">
               {l.label}
               <ChevronRight className="h-4 w-4 text-muted-foreground" />
@@ -638,7 +634,7 @@ export function Footer() {
             </div>
           </div>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-muted">
-            Depuis {site.foundedYear}, Belle Image équipe les foyers en électroménager et ameublement, avec un grand showroom à Kénitra et environ {site.brandsCount} grandes marques.
+            Depuis {site.foundedYear}, Belle Image équipe les foyers en électroménager et ameublement, avec un grand showroom à Kénitra et {site.brandsCount} grandes marques.
           </p>
           <div className="mt-6 flex gap-2">
             <a href={site.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-full border border-ink-foreground/15 transition-colors hover:border-primary hover:bg-primary"><Facebook className="h-4 w-4" /></a>

@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
     pageHead({
       title: "Belle Image — Électroménager & Ameublement à Kénitra, paiement à la livraison",
       description:
-        "Belle Image, showroom d'électroménager et d'ameublement à Kénitra depuis 2003 : environ 15 grandes marques, livraison à domicile et paiement à la livraison.",
+        "Belle Image, showroom d'électroménager et d'ameublement à Kénitra depuis 2003 : 8 grandes marques, livraison à domicile et paiement à la livraison.",
       path: "/",
       jsonLd: [faqLd(homeFaq)],
     }),

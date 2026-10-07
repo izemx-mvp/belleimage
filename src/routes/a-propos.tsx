@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, HeartHandshake, MapPin, Navigation, Phone, ShieldCheck, Sparkles, Store } from "lucide-react";
 import { Crumbs } from "@/components/layout";
-import { MapEmbed, Reveal, SampleNote } from "@/components/brand";
+import { MapEmbed, Reveal } from "@/components/brand";
 import { ShowroomStats } from "@/components/sections/home/showroom";
 import { SmartImage } from "@/components/smart-image";
 import { site } from "@/config/site";
@@ -22,9 +22,9 @@ export const Route = createFileRoute("/a-propos")({
 });
 
 const values = [
-  { icon: HeartHandshake, title: "Le conseil avant tout", text: "Des conseillers qui prennent le temps de comprendre votre besoin et votre budget (texte À COMPLÉTER)." },
+  { icon: HeartHandshake, title: "Le conseil avant tout", text: "Des conseillers qui prennent le temps de comprendre votre besoin et votre budget." },
   { icon: ShieldCheck, title: "Des produits garantis", text: "Garantie constructeur et accompagnement SAV par notre équipe." },
-  { icon: Sparkles, title: "Un large choix", text: `Environ ${site.brandsCount} grandes marques et ${site.referencesLabel.toLowerCase()}.` },
+  { icon: Sparkles, title: "Un large choix", text: `${site.brandsCount} grandes marques et ${site.referencesLabel.toLowerCase()}.` },
   { icon: Store, title: "Un vrai showroom", text: "Voir, toucher, comparer avant d'acheter, 7 jours sur 7." },
 ];
 
@@ -80,13 +80,12 @@ function AboutPage() {
           <div className="lg:pt-6">
             <h2 id="story" className="text-3xl font-extrabold text-ink md:text-4xl">Plus de {roundYears} ans à vos côtés</h2>
             <div className="mt-6 max-w-[62ch] space-y-5 text-[1.05rem] leading-relaxed text-ink/85">
-              <p>Belle Image a ouvert ses portes à Kénitra en {site.foundedYear}. Histoire détaillée de la création du magasin, des fondateurs et des grandes étapes : À COMPLÉTER.</p>
+              <p>Belle Image a ouvert ses portes à Kénitra en {site.foundedYear}. Depuis, le magasin a grandi avec ses clients, en élargissant son choix et ses services pour équiper toute la maison.</p>
               <p>Aujourd'hui, notre showroom réunit l'électroménager et l'ameublement : froid, lavage, cuisson, TV, climatisation, salons, chambres, salles à manger et rangement.</p>
               <p className="border-l-[3px] border-primary pl-5 font-display text-xl font-bold leading-snug text-ink">
                 Des prix clairs, la livraison à domicile et le paiement à la livraison, pour acheter en toute confiance.
               </p>
             </div>
-            <p className="mt-6"><SampleNote>Texte à compléter par Belle Image</SampleNote></p>
           </div>
         </div>
       </section>

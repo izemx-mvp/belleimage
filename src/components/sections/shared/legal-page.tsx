@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { Crumbs, PageHero } from "@/components/layout";
-import { SampleNote } from "@/components/brand";
 import type { LegalSection } from "@/data/legal";
 import { t } from "@/i18n/fr";
 
@@ -11,9 +10,7 @@ export function LegalPage({ title, intro, sections }: { title: string; intro: st
         title={title}
         intro={intro}
         crumbs={<Crumbs items={[{ label: t.common.home, href: <Link to="/" className="hover:text-primary">{t.common.home}</Link> }, { label: title }]} />}
-      >
-        <p className="mt-4"><SampleNote>Structure à faire valider — champs À COMPLÉTER</SampleNote></p>
-      </PageHero>
+      />
       <div className="container-x max-w-3xl py-12">
         <nav aria-label="Sommaire" className="mb-10 rounded-2xl bg-surface p-5">
           <p className="mb-2 text-sm font-bold uppercase tracking-wide">Sommaire</p>
@@ -29,7 +26,6 @@ export function LegalPage({ title, intro, sections }: { title: string; intro: st
             </section>
           ))}
         </div>
-        <p className="mt-12 text-sm text-muted-foreground">Dernière mise à jour : À COMPLÉTER</p>
       </div>
     </>
   );

@@ -17,7 +17,7 @@ export const site = {
   nameAr: "أحسن صورة",
   tagline: "Ameublement & Électroménager à Kénitra depuis 2003",
   foundedYear: 2003,
-  brandsCount: 15, // « environ 15 grandes marques »
+  brandsCount: 8,
   referencesCount: 10000, // « Plus de 10 000 références » — À CONFIRMER
   referencesLabel: "Plus de 10 000 références",
   referencesConfirmed: false,
@@ -29,8 +29,9 @@ export const site = {
     countryCode: "MA",
     full: "Rue 9, Magasin 141, Khabazate, Kénitra",
   },
-  mapEmbed: "https://www.google.com/maps?q=Khabazate%2C%20K%C3%A9nitra%2C%20Maroc&output=embed",
-  mapLink: "https://www.google.com/maps/search/?api=1&query=Belle+Image+Khabazate+K%C3%A9nitra",
+  mapEmbed:
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26379.395771197807!2d-6.597917546949112!3d34.26322657697465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda759ef7264fe89%3A0x70bea08fabba215d!2sBelle%20Image%20Sarl!5e0!3m2!1sfr!2sma!4v1791306437140!5m2!1sfr!2sma",
+  mapLink: "https://maps.app.goo.gl/kA5k2LNooYsxT8Q39",
   phone: "05 37 36 40 33",
   phoneIntl: "+212537364033",
   whatsapp: "212600000000", // NUMÉRO WHATSAPP À CONFIRMER (format international sans +)

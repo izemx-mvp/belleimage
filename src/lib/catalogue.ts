@@ -196,6 +196,7 @@ export function facets(list: Product[]) {
     return m;
   };
   const brandsM = count((p) => p.brand);
+  brandsM.delete("");
   const catsM = count((p) => p.category);
   const prices = list.map((p) => p.price);
   const attrValues = (key: string): Facet[] =>

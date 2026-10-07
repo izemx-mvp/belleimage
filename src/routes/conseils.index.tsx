@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import { Crumbs, EmptyState, PageHero } from "@/components/layout";
-import { SampleNote } from "@/components/brand";
 import { PostCard, formatDate } from "@/components/sections/shared/post-card";
 import { SmartImage } from "@/components/smart-image";
 import { postCategories, type PostCategory } from "@/data/posts";
@@ -83,7 +82,6 @@ function AdvicePage() {
         intro="Nos guides pour choisir l'appareil ou le meuble qui vous correspond, et le garder longtemps."
         crumbs={<Crumbs items={[{ label: t.common.home, href: <Link to="/" className="hover:text-primary">{t.common.home}</Link> }, { label: t.nav.advice }]} />}
       >
-        <p className="mt-4"><SampleNote>Articles exemples à compléter</SampleNote></p>
       </PageHero>
 
       <div className="container-x py-10 md:py-14">

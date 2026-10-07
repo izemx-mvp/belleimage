@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Banknote, ClipboardList, Quote, Sofa } from "lucide-react";
-import { SampleNote, SectionTitle, Stars } from "@/components/brand";
+import { ArrowRight, Banknote, ClipboardList, Quote, Sofa, Facebook } from "lucide-react";
+import { SectionTitle, Stars } from "@/components/brand";
 import { WhatsAppIcon } from "@/components/layout";
 import { SmartImage } from "@/components/smart-image";
-import { sampleReviews } from "@/data/reviews";
 import { getBrands } from "@/lib/catalogue";
 import { track, waLink } from "@/lib/commerce";
+import { site } from "@/config/site";
 import { t } from "@/i18n/fr";
 
 /** Mur de marques : une seule grille à filets (pas de cartes séparées). */
@@ -22,15 +22,16 @@ export function BrandsWall() {
           </Link>
         }
       />
-      <ul className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-5">
+      <ul className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border bg-border sm:grid-cols-4">
         {brands.map((b) => (
           <li key={b.slug} className="bg-background">
             <Link
               to="/marques/$brand"
               params={{ brand: b.slug }}
-              className="grid h-20 place-items-center px-2 text-center font-display text-sm font-bold tracking-tight text-ink/35 transition-colors hover:bg-surface hover:text-ink md:h-28 md:text-lg"
+              aria-label={b.name}
+              className="grid h-20 place-items-center px-4 transition-colors hover:bg-surface md:h-28 md:px-8"
             >
-              {b.name}
+              <img src={b.logo} alt={b.name} loading="lazy" className="max-h-9 w-full object-contain opacity-80 grayscale transition hover:opacity-100 hover:grayscale-0 md:max-h-12" />
             </Link>
           </li>
         ))}
@@ -91,46 +92,23 @@ export function HowToOrder() {
   );
 }
 
-/** Un avis mis en avant, deux plus discrets. */
+/**
+ * Avis clients : renvoi vers la page Facebook du magasin, où se trouvent les vrais avis.
+ * (Aucun avis n'est inventé sur le site.)
+ */
 export function Reviews() {
-  const [first, ...others] = sampleReviews;
-  if (!first) return null;
   return (
     <section className="bg-surface py-16 md:py-24" aria-labelledby="home-reviews">
       <div className="container-x">
-        <SectionTitle title={t.home.reviewsTitle} id="home-reviews" />
-        <p className="-mt-4 mb-8">
-          <SampleNote>{t.home.reviewsNote}</SampleNote>
-        </p>
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
-          <figure className="relative flex flex-col justify-between overflow-hidden rounded-3xl bg-ink p-7 text-ink-foreground md:p-10">
-            <Quote className="absolute -right-2 -top-2 h-32 w-32 text-primary/25" aria-hidden />
-            <div className="relative">
-              <Stars size={18} />
-              <blockquote className="mt-6 font-display text-2xl font-bold leading-snug tracking-[-0.01em] md:text-3xl">
-                {first.text}
-              </blockquote>
-            </div>
-            <figcaption className="relative mt-8 text-sm">
-              <p className="font-semibold">{first.name}</p>
-              <p className="text-ink-muted">
-                {first.city}, {first.product}
-              </p>
-            </figcaption>
-          </figure>
-          <div className="grid gap-4">
-            {others.slice(0, 2).map((r) => (
-              <figure key={r.name} className="rounded-3xl border bg-background p-6 md:p-7">
-                <Stars size={14} />
-                <blockquote className="mt-4 text-ink/85">{r.text}</blockquote>
-                <figcaption className="mt-5 text-sm">
-                  <p className="font-semibold text-ink">{r.name}</p>
-                  <p className="text-muted-foreground">
-                    {r.city}, {r.product}
-                  </p>
-                </figcaption>
-              </figure>
-            ))}
+        <div className="relative overflow-hidden rounded-3xl bg-ink p-7 text-ink-foreground md:p-12">
+          <Quote className="absolute -right-2 -top-2 h-32 w-32 text-primary/25" aria-hidden />
+          <div className="relative max-w-2xl">
+            <Stars size={18} />
+            <h2 id="home-reviews" className="mt-5 text-3xl font-extrabold md:text-4xl">{t.home.reviewsTitle}</h2>
+            <p className="mt-3 text-ink-muted">{t.home.reviewsText}</p>
+            <a href={site.social.facebook} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-7">
+              <Facebook className="h-4 w-4" aria-hidden />{t.home.reviewsCta}
+            </a>
           </div>
         </div>
       </div>

@@ -15,7 +15,6 @@ import { Route as CgvRouteImport } from './routes/cgv'
 import { Route as CompteRouteImport } from './routes/compte'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
-import { Route as FavorisRouteImport } from './routes/favoris'
 import { Route as GarantieSavRouteImport } from './routes/garantie-sav'
 import { Route as LivraisonPaiementRouteImport } from './routes/livraison-paiement'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
@@ -66,11 +65,6 @@ const ContactRoute = ContactRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FavorisRoute = FavorisRouteImport.update({
-  id: '/favoris',
-  path: '/favoris',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GarantieSavRoute = GarantieSavRouteImport.update({
@@ -187,7 +181,6 @@ export interface FileRoutesByFullPath {
   '/compte': typeof CompteRouteWithChildren
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/favoris': typeof FavorisRoute
   '/garantie-sav': typeof GarantieSavRoute
   '/livraison-paiement': typeof LivraisonPaiementRoute
   '/mentions-legales': typeof MentionsLegalesRoute
@@ -216,7 +209,6 @@ export interface FileRoutesByTo {
   '/cgv': typeof CgvRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/favoris': typeof FavorisRoute
   '/garantie-sav': typeof GarantieSavRoute
   '/livraison-paiement': typeof LivraisonPaiementRoute
   '/mentions-legales': typeof MentionsLegalesRoute
@@ -247,7 +239,6 @@ export interface FileRoutesById {
   '/compte': typeof CompteRouteWithChildren
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
-  '/favoris': typeof FavorisRoute
   '/garantie-sav': typeof GarantieSavRoute
   '/livraison-paiement': typeof LivraisonPaiementRoute
   '/mentions-legales': typeof MentionsLegalesRoute
@@ -279,7 +270,6 @@ export interface FileRouteTypes {
     | '/compte'
     | '/contact'
     | '/faq'
-    | '/favoris'
     | '/garantie-sav'
     | '/livraison-paiement'
     | '/mentions-legales'
@@ -308,7 +298,6 @@ export interface FileRouteTypes {
     | '/cgv'
     | '/contact'
     | '/faq'
-    | '/favoris'
     | '/garantie-sav'
     | '/livraison-paiement'
     | '/mentions-legales'
@@ -338,7 +327,6 @@ export interface FileRouteTypes {
     | '/compte'
     | '/contact'
     | '/faq'
-    | '/favoris'
     | '/garantie-sav'
     | '/livraison-paiement'
     | '/mentions-legales'
@@ -369,7 +357,6 @@ export interface RootRouteChildren {
   CompteRoute: typeof CompteRouteWithChildren
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
-  FavorisRoute: typeof FavorisRoute
   GarantieSavRoute: typeof GarantieSavRoute
   LivraisonPaiementRoute: typeof LivraisonPaiementRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
@@ -430,13 +417,6 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/favoris': {
-      id: '/favoris'
-      path: '/favoris'
-      fullPath: '/favoris'
-      preLoaderRoute: typeof FavorisRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/garantie-sav': {
@@ -615,7 +595,6 @@ const rootRouteChildren: RootRouteChildren = {
   CompteRoute: CompteRouteWithChildren,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
-  FavorisRoute: FavorisRoute,
   GarantieSavRoute: GarantieSavRoute,
   LivraisonPaiementRoute: LivraisonPaiementRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,

@@ -28,13 +28,13 @@ export const homeCopy = {
   companyLabel: "Qui sommes-nous",
   companyTitle: `Une enseigne de Kénitra, depuis ${site.foundedYear}`,
   companyText:
-    "Belle Image est un magasin d'électroménager et d'ameublement installé à Kénitra. Notre métier : vous aider à bien équiper votre maison, avec des produits de grandes marques, des conseils honnêtes et un service qui continue après l'achat. (Texte À COMPLÉTER par Belle Image.)",
+    "Belle Image est un magasin d'électroménager et d'ameublement installé à Kénitra. Notre métier : vous aider à bien équiper votre maison, avec des produits de grandes marques, des conseils honnêtes et un service qui continue après l'achat.",
   companyCta: "Notre histoire",
   services: [
     { title: "Conseil personnalisé", text: "Des conseillers pour vous orienter selon votre besoin et votre budget." },
     { title: "Livraison et installation", text: "Livraison à domicile, installation selon le produit." },
     { title: "Garantie et SAV", text: "Garantie constructeur et suivi après l'achat par notre équipe." },
-    { title: "Un large choix", text: `Environ ${site.brandsCount} grandes marques en électroménager et ameublement.` },
+    { title: "Un large choix", text: `${site.brandsCount} grandes marques en électroménager et ameublement.` },
   ],
 
   waysTitle: "Deux façons d'acheter",

@@ -27,8 +27,8 @@ export const faqGroups: FaqGroup[] = [
     { q: "Que faire en cas de panne ?", a: "Contactez-nous par WhatsApp ou par téléphone avec votre référence de commande et une photo du problème : nous organisons la prise en charge avec le SAV de la marque." },
   ] },
   { id: "retours", title: "Retours & échanges", items: [
-    { q: "Puis-je échanger ou retourner un produit ?", a: "La politique de retour et d'échange est en cours de rédaction (À COMPLÉTER). Contactez-nous : nous étudions chaque demande." },
-    { q: "Que faire si le produit arrive endommagé ?", a: "Vérifiez le colis devant le livreur et signalez immédiatement tout dommage. Procédure détaillée À COMPLÉTER." },
+    { q: "Puis-je échanger ou retourner un produit ?", a: "Contactez-nous par WhatsApp ou par téléphone avec votre référence de commande : nous étudions chaque demande d'échange ou de retour." },
+    { q: "Que faire si le produit arrive endommagé ?", a: "Vérifiez le colis devant le livreur et signalez immédiatement tout dommage, puis contactez-nous avec une photo : nous organisons la prise en charge." },
   ] },
 ];
 

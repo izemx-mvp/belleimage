@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Percent } from "lucide-react";
 import { useState } from "react";
-import { SampleNote, SectionTitle } from "@/components/brand";
+import { SectionTitle } from "@/components/brand";
 import { ProductGrid, ProductRail } from "@/components/product";
 import { SmartImage } from "@/components/smart-image";
 import { discount, getBestSellers, getPromotions, pillarOf } from "@/lib/catalogue";
@@ -124,9 +124,6 @@ export function BestSellers() {
         <div id="best-panel" role="tabpanel" aria-labelledby={`tab-${tab}`}>
           <ProductGrid key={tab} products={list} />
         </div>
-        <p className="mt-6">
-          <SampleNote>{t.catalogue.sampleNote}</SampleNote>
-        </p>
       </div>
     </section>
   );

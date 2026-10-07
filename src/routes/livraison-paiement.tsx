@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Banknote, CheckCircle2, PackageCheck, Truck } from "lucide-react";
 import { Crumbs, PageHero } from "@/components/layout";
-import { Reassurance, SampleNote, SectionTitle } from "@/components/brand";
+import { Reassurance, SectionTitle } from "@/components/brand";
 import { site } from "@/config/site";
 import { formatPrice } from "@/lib/commerce";
 import { breadcrumbLd, pageHead } from "@/lib/seo";

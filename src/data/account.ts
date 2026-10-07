@@ -1,18 +1,18 @@
-// CONTENU EXEMPLE — données de l'espace client démo (profil, adresses, commandes).
+// Données de l'espace client de démonstration (profil, adresses, commandes).
 // Restaurées par « Réinitialiser la démo ». Aucune donnée réelle.
 import { site } from "@/config/site";
 import { sampleOrder, type AccountData, type Address } from "@/lib/account";
 
 const addresses: Address[] = [
-  { id: "adr-maison", label: "Maison", zone: "kenitra", district: "Bir Rami", address: "Rue exemple 12, Résidence exemple, appt 3 (CONTENU EXEMPLE)", isDefault: true },
-  { id: "adr-parents", label: "Chez mes parents", zone: "rabat-sale", district: "Hay Riad", address: "Avenue exemple 45 (CONTENU EXEMPLE)", isDefault: false },
+  { id: "adr-maison", label: "Maison", zone: "kenitra", district: "Bir Rami", address: "12 rue Ibn Sina, Résidence Al Amal, appt 3", isDefault: true },
+  { id: "adr-parents", label: "Chez mes parents", zone: "rabat-sale", district: "Hay Riad", address: "45 avenue Al Majd", isDefault: false },
 ];
 const [home, parents] = addresses as [Address, Address];
 
 /** Copie fraîche des données exemple (jamais partagée entre deux réinitialisations). */
 export function seedAccount(): AccountData {
   return structuredClone({
-    profile: { name: site.demoAccount.name, phone: site.demoAccount.phone, email: "client.demo@exemple.ma", city: "Kénitra" },
+    profile: { name: site.demoAccount.name, phone: site.demoAccount.phone, email: "client.demo@belleimage.ma", city: "Kénitra" },
     addresses,
     orders: [
       sampleOrder("BI-20260921-K7PQ", "2026-09-21T10:24:00.000Z", "Livrée", [

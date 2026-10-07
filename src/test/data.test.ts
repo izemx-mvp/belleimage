@@ -20,7 +20,7 @@ describe("sample data integrity", () => {
       const c = getCategory(p.category);
       expect(c, p.slug).toBeDefined();
       expect(c!.subcategories.some((s) => s.slug === p.subcategory), p.slug).toBe(true);
-      expect(brands.has(p.brand)).toBe(true);
+      if (p.brand) expect(brands.has(p.brand)).toBe(true);
       expect(p.sample).toBe(true);
       if (p.oldPrice) expect(p.oldPrice).toBeGreaterThan(p.price);
     }

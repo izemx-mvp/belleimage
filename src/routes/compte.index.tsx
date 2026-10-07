@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Heart, MapPin, Package, User } from "lucide-react";
+import { ArrowRight, MapPin, Package, User } from "lucide-react";
 import { WhatsAppIcon } from "@/components/layout";
 import { ProductThumb } from "@/components/product";
 import { AccountShell, StatusBadge, formatOrderDate } from "@/components/sections/account/account-shell";
@@ -8,7 +8,6 @@ import { getProductBySlug } from "@/lib/catalogue";
 import { formatPrice, track, waLink } from "@/lib/commerce";
 import { pageHead } from "@/lib/seo";
 import { useAuth } from "@/store/auth";
-import { useShop } from "@/store/shop";
 import { t } from "@/i18n/fr";
 
 export const Route = createFileRoute("/compte/")({
@@ -18,12 +17,10 @@ export const Route = createFileRoute("/compte/")({
 
 function AccountHome() {
   const { user, orders, addresses } = useAuth();
-  const { favs } = useShop();
   const last = orders[0];
   const quick = [
     { to: "/compte/commandes", label: t.account.links.orders, icon: Package, count: orders.length },
     { to: "/compte/adresses", label: t.account.links.addresses, icon: MapPin, count: addresses.length },
-    { to: "/favoris", label: t.account.links.favorites, icon: Heart, count: favs.length },
     { to: "/compte/profil", label: t.account.links.profile, icon: User, count: undefined },
   ] as const;
   const firstProduct = last?.items[0]?.slug ? getProductBySlug(last.items[0].slug) : undefined;

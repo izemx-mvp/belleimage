@@ -25,7 +25,6 @@ describe("App routing", () => {
     ["/panier", "/panier"],
     ["/commande", "/commande/"],
     ["/commande/confirmation/BI-20261006-ABCD", "/commande/confirmation/$ref"],
-    ["/favoris", "/favoris"],
     ["/a-propos", "/a-propos"],
     ["/livraison-paiement", "/livraison-paiement"],
     ["/garantie-sav", "/garantie-sav"],

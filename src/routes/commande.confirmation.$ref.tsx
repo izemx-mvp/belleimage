@@ -2,10 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useReducedMotion } from "framer-motion";
 import { Check, Phone } from "lucide-react";
 import { useEffect, useState } from "react";
-import { WhatsAppIcon } from "@/components/layout";
 import { Reassurance, Stars } from "@/components/brand";
 import { site } from "@/config/site";
-import { buildOrderMessage, formatPrice, loadOrderRecap, telLink, track, waLink, type OrderRecap } from "@/lib/commerce";
+import { formatPrice, loadOrderRecap, telLink, track, type OrderRecap } from "@/lib/commerce";
 import { pageHead } from "@/lib/seo";
 import { t } from "@/i18n/fr";
 
@@ -23,12 +22,6 @@ function ConfirmationPage() {
     setRecap(loadOrderRecap(ref));
     window.scrollTo({ top: 0 });
   }, [ref]);
-
-  const reopen = () => {
-    if (!recap) return;
-    track("whatsapp_click", { location: "confirmation", transaction_id: recap.ref });
-    window.open(waLink(buildOrderMessage(recap)), "_blank", "noopener,noreferrer");
-  };
 
   return (
     <>
@@ -50,7 +43,6 @@ function ConfirmationPage() {
         <p className="tabular mt-1 inline-block rounded-full bg-surface px-4 py-2 font-display text-xl font-extrabold tracking-wide">{ref}</p>
         <p className="mx-auto mt-5 max-w-lg text-lg font-semibold text-ink">{t.confirmation.text}</p>
         <div className="mt-6 flex flex-col justify-center gap-2 sm:flex-row">
-          <button type="button" onClick={reopen} disabled={!recap} className="btn btn-whatsapp"><WhatsAppIcon className="h-4 w-4" />{t.confirmation.reopen}</button>
           <a href={telLink} onClick={() => track("phone_click", { location: "confirmation" })} className="btn btn-outline"><Phone className="h-4 w-4" aria-hidden />{t.confirmation.callUs} · {site.phone}</a>
         </div>
       </div>

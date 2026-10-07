@@ -1,11 +1,10 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { AlertCircle, Lock, MapPin, UserCheck } from "lucide-react";
+import { AlertCircle, Check, Lock, MapPin, UserCheck } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { WhatsAppIcon } from "@/components/layout";
 import { site } from "@/config/site";
 import { defaultAddress, orderFromRecap } from "@/lib/account";
 import { applyAddress, buildRecap, emptyCheckout, prefillFromAccount, validateCheckout, type CheckoutErrors, type CheckoutValues } from "@/lib/checkout";
-import { buildOrderMessage, getZone, saveOrderRecap, track, waLink } from "@/lib/commerce";
+import { getZone, saveOrderRecap, track } from "@/lib/commerce";
 import { useAuth } from "@/store/auth";
 import { useShop } from "@/store/shop";
 import { t } from "@/i18n/fr";
@@ -88,9 +87,7 @@ export function CheckoutForm() {
     saveOrderRecap(recap);
     // Connecté : la commande rejoint l'historique du compte avec le statut « Envoyée ».
     if (isLoggedIn) addOrder(orderFromRecap(recap, items.map((i) => i.product.slug)));
-    track("order_whatsapp_sent", { transaction_id: recap.ref, value: recap.total, currency: "MAD", shipping: recap.fee });
-    // Ouverture synchrone dans le gestionnaire de soumission (évite le blocage des pop-ups).
-    window.open(waLink(buildOrderMessage(recap)), "_blank", "noopener,noreferrer");
+    track("order_submitted", { transaction_id: recap.ref, value: recap.total, currency: "MAD", shipping: recap.fee });
     try { sessionStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
     clear();
     navigate({ to: "/commande/confirmation/$ref", params: { ref: recap.ref } });
@@ -185,8 +182,8 @@ export function CheckoutForm() {
 function SubmitBlock() {
   return (
     <div className="space-y-3">
-      <button type="submit" className="btn btn-whatsapp w-full py-4 text-base">
-        <WhatsAppIcon className="h-5 w-5" />{t.checkout.submit}
+      <button type="submit" className="btn btn-primary w-full py-4 text-base">
+        <Check className="h-5 w-5" aria-hidden />{t.checkout.submit}
       </button>
       <p className="flex items-start gap-2 text-xs text-muted-foreground"><Lock className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />{t.checkout.whatsappInfo}</p>
     </div>

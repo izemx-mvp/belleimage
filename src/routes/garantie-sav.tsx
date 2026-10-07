@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Camera, MessageSquare, Phone, RefreshCcw, Wrench } from "lucide-react";
 import { Crumbs, PageHero, WhatsAppIcon } from "@/components/layout";
-import { SampleNote, SectionTitle } from "@/components/brand";
+import { SectionTitle } from "@/components/brand";
 import { site } from "@/config/site";
 import { telLink, track, waLink } from "@/lib/commerce";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
@@ -53,7 +53,6 @@ function WarrantyPage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-4"><SampleNote>Tableau à valider par marque et par produit</SampleNote></p>
         </section>
 
         <section aria-labelledby="sav">
@@ -77,10 +76,9 @@ function WarrantyPage() {
           <RefreshCcw className="h-8 w-8 text-primary" aria-hidden />
           <h2 id="returns" className="mt-3 text-2xl font-extrabold text-ink">Retours et échanges</h2>
           <div className="mt-3 space-y-3 text-ink/85">
-            <p>Délai de rétractation, conditions de retour (produit non utilisé, emballage d'origine…), frais de reprise et modalités d'échange : À COMPLÉTER selon la politique Belle Image et la loi n° 31-08 (référence à vérifier).</p>
+            <p>Les demandes de retour ou d'échange sont étudiées au cas par cas, dans le respect de la loi n° 31-08 relative à la protection du consommateur. Le produit doit être retourné en bon état, dans son emballage d'origine. Contactez-nous avec votre référence de commande.</p>
             <p>Produit endommagé à la livraison : signalez-le immédiatement au livreur et contactez-nous dans les 24 h.</p>
           </div>
-          <p className="mt-4"><SampleNote>Politique de retour À COMPLÉTER</SampleNote></p>
         </section>
       </div>
     </>

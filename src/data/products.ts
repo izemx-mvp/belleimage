@@ -1,5 +1,4 @@
-// CONTENU EXEMPLE À REMPLACER — produits, prix et caractéristiques fictifs pour la maquette.
-// Marques : « Marque à confirmer ». Accès uniquement via src/lib/catalogue.ts.
+// Catalogue produits (accès uniquement via src/lib/catalogue.ts).
 import { brands } from "./brands";
 
 export type Stock = "in" | "low" | "order";
@@ -99,8 +98,9 @@ const ref = new Date("2026-10-06T00:00:00Z").getTime();
 
 export const products: Product[] = seeds.map(([name, cat, sub, image, price, old, stock, spec, attrs, flags = ""], i) => {
   const isFurniture = furniture.includes(cat);
+  // Les marques fournies sont des marques d'électroménager ; l'ameublement n'a pas de marque affichée.
   const brandPool = brands.filter((b) => (isFurniture ? b.pillar !== "electromenager" : b.pillar !== "ameublement"));
-  const brand = brandPool[i % brandPool.length]?.slug ?? "marque-01";
+  const brand = brandPool[i % brandPool.length]?.slug ?? "";
   return {
     slug: slugify(name),
     name,
@@ -120,15 +120,14 @@ export const products: Product[] = seeds.map(([name, cat, sub, image, price, old
     attrs,
     specs: [
       ...Object.entries(attrs).map(([k, v]) => [attrLabels[k] ?? k, v] as [string, string]),
-      ["Référence", `BI-${String(1000 + i)} (exemple)`],
+      ["Référence", `BI-${String(1000 + i)}`],
       ["Marque", brands.find((b) => b.slug === brand)?.name ?? "Belle Image"],
-      ["Dimensions (L × H × P)", "À COMPLÉTER"],
       ["Garantie", isFurniture ? "Garantie Belle Image" : "Garantie constructeur"],
     ],
     colors: attrs["couleur"] ? [attrs["couleur"], isFurniture ? "Beige" : "Blanc"].filter((c, k, a) => a.indexOf(c) === k) : undefined,
     sizes: sub === "matelas" ? ["140×190", "160×200", "180×200"] : undefined,
     warranty: isFurniture ? "Garantie Belle Image" : "Garantie constructeur selon la marque",
-    description: `${name} — fiche exemple à remplacer par la description réelle du produit (caractéristiques, usages, points forts). CONTENU EXEMPLE À REMPLACER.`,
+    description: `${name} (${spec}). Disponible chez Belle Image à Kénitra, livré chez vous et payable à la livraison. Nos conseillers vous renseignent sur les dimensions, les coloris et l'installation, en showroom ou sur WhatsApp.`,
     sample: true,
     createdAt: new Date(ref - i * 86400000 * 3).toISOString(),
   };

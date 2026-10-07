@@ -130,7 +130,7 @@ export function loadOrderRecap(ref: string): OrderRecap | null {
 declare global {
   interface Window { dataLayer?: Record<string, unknown>[] }
 }
-export type TrackEvent = "view_item" | "add_to_cart" | "begin_checkout" | "order_whatsapp_sent" | "whatsapp_click" | "phone_click";
+export type TrackEvent = "view_item" | "add_to_cart" | "begin_checkout" | "order_submitted" | "whatsapp_click" | "phone_click";
 export function track(event: TrackEvent, data: Record<string, unknown> = {}) {
   if (typeof window === "undefined") return;
   window.dataLayer = window.dataLayer || [];

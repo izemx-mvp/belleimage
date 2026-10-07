@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowUpRight, BookOpen, Store } from "lucide-react";
 import { Crumbs, WhatsAppIcon } from "@/components/layout";
-import { SampleNote, SectionTitle } from "@/components/brand";
+import { SectionTitle } from "@/components/brand";
 import { ProductGrid } from "@/components/product";
 import { PostCard, formatDate } from "@/components/sections/shared/post-card";
 import { SmartImage } from "@/components/smart-image";
@@ -90,7 +90,6 @@ function ArticlePage() {
               </section>
             ))}
           </div>
-          <p className="mt-10"><SampleNote>Article exemple à compléter</SampleNote></p>
         </div>
 
         {/* Colonne d'aide : reste visible pendant la lecture sur grand écran */}

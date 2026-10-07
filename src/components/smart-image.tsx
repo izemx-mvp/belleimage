@@ -1,7 +1,6 @@
 import { ImageIcon, type LucideIcon } from "lucide-react";
 import { getImage } from "@/lib/images";
 import { imageSpec } from "@/data/images";
-import { t } from "@/i18n/fr";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -53,17 +52,12 @@ export function SmartImage({ name, alt, icon: Icon = ImageIcon, aspect, fit = "c
   return (
     <div
       role={label ? "img" : undefined}
-      aria-label={label ? `${label} — ${t.product.imagePlaceholder.toLowerCase()}` : undefined}
+      aria-label={label || undefined}
       className={cn("relative flex flex-col items-center justify-center overflow-hidden bg-surface", !aspect && "h-full", className)}
       style={style}
     >
       <div className="absolute -bottom-1/3 left-1/2 h-2/3 w-[120%] -translate-x-1/2 rounded-[50%] border-[10px] border-primary/10" aria-hidden />
       <Icon className={cn("relative text-ink/60", compact ? "h-1/2 w-1/2" : "h-[28%] max-h-24 w-[28%] max-w-24")} strokeWidth={1.1} aria-hidden />
-      {!compact && (
-        <span className="relative mt-3 px-2 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground" aria-hidden>
-          {t.product.imagePlaceholder}
-        </span>
-      )}
     </div>
   );
 }

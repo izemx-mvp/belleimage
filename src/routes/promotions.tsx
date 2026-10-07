@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Crumbs, EmptyState, PageHero } from "@/components/layout";
-import { Reassurance, SampleNote } from "@/components/brand";
+import { Reassurance } from "@/components/brand";
 import { ProductGrid } from "@/components/product";
 import { discount, getPromotions } from "@/lib/catalogue";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
@@ -41,7 +41,7 @@ function PromotionsPage() {
         intro={`${promos.length} offres en cours, jusqu'à -${maxPct} %. Livraison à domicile et paiement à la livraison.`}
         crumbs={<Crumbs items={[{ label: t.common.home, href: <Link to="/" className="hover:text-primary">{t.common.home}</Link> }, { label: t.nav.promos }]} />}
       >
-        <p className="mt-4"><SampleNote>{t.home.promosBannerNote}</SampleNote></p>
+        <p className="mt-4 text-sm text-muted-foreground">{t.home.promosBannerNote}</p>
       </PageHero>
       <div className="container-x py-10">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b pb-4">

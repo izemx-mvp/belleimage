@@ -186,6 +186,3 @@ export function MapEmbed({ className = "" }: { className?: string }) {
   );
 }
 
-export function SampleNote({ children = t.product.sample, className = "" }: { children?: ReactNode; className?: string }) {
-  return <span className={cn("inline-flex items-center rounded bg-primary-soft px-1.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-primary-deep", className)}>{children}</span>;
-}
